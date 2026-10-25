@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FinWise | Personal finance planning</title>
+  <meta name="description" content="Track income, expenses, budgets, bills, and savings goals in one straightforward personal finance workspace.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="landing-page" data-page="landing">
+  <header class="topbar">
+    <a class="brand-wrap" href="index.html" aria-label="FinWise home">
+      <span class="brand-mark" aria-hidden="true">FW</span>
+      <span class="brand-name">FinWise</span>
+    </a>
+    <nav class="topnav" aria-label="Main navigation">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="transactions.html">Transactions</a>
+      <a href="reports.html">Reports</a>
+    </nav>
+    <a class="btn btn-primary" href="inputs.html">Start planning</a>
+  </header>
+
+  <main>
+    <section class="hero-shell">
+      <div class="hero-copy">
+        <p class="eyebrow">PERSONAL FINANCE PLANNING</p>
+        <h1>Know where your money goes. <span>Plan what comes next.</span></h1>
+        <p class="hero-text">Keep monthly income and spending, budgets, bills, savings goals, and retirement estimates together in one practical workspace.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="inputs.html">Set up your plan</a>
+          <a class="btn btn-ghost" href="dashboard.html">Open dashboard</a>
+        </div>
+      </div>
+
+      <aside class="hero-panel" aria-label="Preview of your saved monthly finances">
+        <div class="preview-heading">
+          <div>
+            <p>YOUR FINANCES</p>
+            <h2 id="preview-month">This month</h2>
+          </div>
+          <span class="preview-period">Saved on this device</span>
+        </div>
+        <div class="preview-totals">
+          <div>
+            <p>Income</p>
+            <strong id="preview-income">₹0</strong>
+          </div>
+          <div>
+            <p>Expenses</p>
+            <strong id="preview-expenses">₹0</strong>
+          </div>
+        </div>
+        <div id="preview-categories" class="preview-categories" aria-live="polite"></div>
+        <p id="preview-empty" class="preview-empty">Add your plan or transactions to see your figures here.</p>
+      </aside>
+    </section>
+
+    <section class="highlights" aria-labelledby="features-heading">
+      <p class="eyebrow">A CLEARER MONTH</p>
+      <h2 id="features-heading">The essentials for making a practical plan.</h2>
+      <ul class="capability-list">
+        <li>
+          <strong>Track transactions</strong>
+          Record income and expenses with dates, categories, and notes.
+        </li>
+        <li>
+          <strong>Set monthly budgets</strong>
+          Compare category limits with recorded spending.
+        </li>
+        <li>
+          <strong>Plan savings goals</strong>
+          Track progress and estimate the monthly contribution needed.
+        </li>
+        <li>
+          <strong>Stay ahead of bills</strong>
+          Keep due dates and payment status in one place.
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>FinWise saves your data in a local SQLite file on this device.</span>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
