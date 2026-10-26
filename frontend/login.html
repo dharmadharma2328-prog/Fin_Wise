@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Sign in to your FinWise personal finance workspace.">
+  <title>Sign in | FinWise</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="auth-page" data-auth-page="login">
+  <main class="auth-shell">
+    <a class="brand-wrap auth-brand" href="login.html" aria-label="FinWise sign in">
+      <span class="brand-mark" aria-hidden="true">FW</span>
+      <span class="brand-name">FinWise</span>
+    </a>
+    <section class="auth-panel" aria-labelledby="auth-title">
+      <p class="eyebrow">WELCOME BACK</p>
+      <h1 id="auth-title">Sign in to FinWise</h1>
+      <p class="auth-description">Your finances, ready when you are.</p>
+      <div class="auth-google">
+        <div id="google-signin-button"></div>
+        <p id="google-auth-note" class="auth-google-note" role="status">Google sign-in is not configured yet.</p>
+      </div>
+      <p class="auth-provider-note">Google handles sign-in identity only. Your finance data stays in this local app.</p>
+      <form id="auth-form" novalidate>
+        <label for="email">Email address</label>
+        <input id="email" class="form-control" type="email" name="email" autocomplete="email" maxlength="254" required>
+        <label for="password">Password</label>
+        <input id="password" class="form-control" type="password" name="password" autocomplete="current-password" maxlength="128" required>
+        <p id="auth-message" class="auth-message" role="alert" aria-live="polite"></p>
+        <button class="btn btn-primary auth-submit" type="submit">Sign in</button>
+      </form>
+      <p class="auth-switch">New to FinWise? <a href="signup.html">Create an account</a></p>
+    </section>
+    <p class="auth-local-note">Your account and finance data are stored locally on this device.</p>
+  </main>
+  <script src="auth.js"></script>
+</body>
+</html>

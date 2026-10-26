@@ -22,16 +22,26 @@
   <div class="container text-light pb-5">
     <header class="page-intro">
       <p class="eyebrow">MONEY GUIDE</p>
-      <h1>Review your money habits</h1>
-      <p>This local demo summarizes your saved figures and uses preset guidance. It does not send your financial data to an AI service.</p>
+      <h1>Your private money coach</h1>
+      <p>Ask about your recorded income, spending, budgets, savings goals, or upcoming bills and get guidance based on this month's activity.</p>
     </header>
 
     <div class="card glass p-4 mb-4">
-      <div id="ai-chat" class="chat-box"></div>
+      <div class="privacy-note" role="note">
+        <strong>Private by design</strong>
+        <span>This coach uses finance rules and calculations on this device, not a generative AI model. Your questions and finance data are not sent to an external AI service. Guidance is informational, not professional financial advice.</span>
+      </div>
+      <div class="coach-prompts" aria-label="Suggested questions">
+        <button class="btn btn-ghost coach-prompt" type="button" data-question="Where am I spending the most this month?">Where is my spending highest?</button>
+        <button class="btn btn-ghost coach-prompt" type="button" data-question="How are my budgets doing?">Review my budgets</button>
+        <button class="btn btn-ghost coach-prompt" type="button" data-question="What bills are coming up?">What bills are coming up?</button>
+        <button class="btn btn-ghost coach-prompt" type="button" data-question="How are my savings goals progressing?">Review my savings goals</button>
+      </div>
+      <div id="ai-chat" class="chat-box" aria-live="polite" aria-label="Private money coach conversation"></div>
       <form id="ai-form" class="mt-3">
         <div class="d-flex gap-2 flex-wrap">
-          <input id="ai-question" class="form-control" aria-label="Ask about your finances" placeholder="How am I doing on spending this month?" required>
-          <button type="submit" class="btn btn-main">Ask</button>
+          <input id="ai-question" class="form-control" aria-label="Ask about your finances" maxlength="300" placeholder="Ask about income, spending, budgets, goals, or bills" required>
+          <button type="submit" class="btn btn-main">Ask coach</button>
         </div>
       </form>
     </div>

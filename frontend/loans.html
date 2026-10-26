@@ -32,7 +32,7 @@
           <form id="loan-form">
             <div class="mb-3">
               <label for="loan-principal">Principal</label>
-              <input id="loan-principal" class="form-control" type="number" min="0" step="0.01" value="500000" required>
+              <input id="loan-principal" class="form-control" type="text" inputmode="decimal" data-money-input autocomplete="off" value="500000" required>
             </div>
             <div class="mb-3">
               <label for="loan-rate">Annual interest rate (%)</label>
@@ -44,7 +44,7 @@
             </div>
             <div class="mb-3">
               <label for="loan-extra">Extra monthly payment</label>
-              <input id="loan-extra" class="form-control" type="number" min="0" step="0.01" value="0">
+              <input id="loan-extra" class="form-control" type="text" inputmode="decimal" data-money-input autocomplete="off" value="0">
             </div>
             <button type="submit" class="btn btn-main w-100">Calculate</button>
           </form>

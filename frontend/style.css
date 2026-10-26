@@ -520,6 +520,61 @@ body[data-page] .chat-message p {
   margin: 0;
 }
 
+body[data-page] .chat-box {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 460px;
+  overflow-y: auto;
+}
+
+body[data-page] .chat-message.assistant {
+  align-self: flex-start;
+}
+
+body[data-page] .chat-message.user {
+  align-self: flex-end;
+}
+
+.privacy-note {
+  display: grid;
+  gap: 3px;
+  margin-bottom: 18px;
+  padding: 13px 15px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: var(--surface-muted);
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.privacy-note strong {
+  color: var(--ink);
+}
+
+.coach-prompts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.coach-prompt {
+  min-height: 36px;
+  padding: 0.4rem 0.75rem;
+  font: inherit;
+  font-size: 0.88rem;
+  cursor: pointer;
+}
+
+.coach-prompts + .chat-box {
+  min-height: 90px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: #fff;
+}
+
 .nav-links {
   align-items: center;
 }
@@ -547,6 +602,153 @@ body[data-page] .chat-message p {
 
 .toast-message.is-visible {
   opacity: 1;
+}
+
+.auth-page {
+  min-height: 100vh;
+  background: var(--surface-muted);
+}
+
+.auth-shell {
+  width: min(100% - 32px, 440px);
+  margin-inline: auto;
+  padding-block: clamp(32px, 8vh, 76px) 28px;
+}
+
+.auth-brand {
+  width: fit-content;
+  margin: 0 auto 28px;
+}
+
+.auth-panel {
+  padding: clamp(24px, 6vw, 40px);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+}
+
+.auth-panel h1 {
+  margin: 0;
+  font-size: clamp(1.8rem, 7vw, 2.25rem);
+}
+
+.auth-description {
+  margin: 8px 0 26px;
+  color: var(--muted);
+}
+
+.auth-panel label {
+  display: block;
+  margin: 16px 0 6px;
+  font-weight: 600;
+}
+
+.auth-panel .form-control {
+  width: 100%;
+  min-height: 46px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: #fff;
+  color: var(--ink);
+  font: inherit;
+}
+
+.auth-panel .form-control:focus {
+  border-color: var(--accent);
+  outline: 3px solid rgb(39 98 79 / 14%);
+}
+
+.auth-help,
+.auth-local-note {
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+.auth-help {
+  display: block;
+  margin-top: 5px;
+}
+
+.auth-submit {
+  width: 100%;
+  margin-top: 12px;
+}
+
+.auth-google {
+  min-height: 44px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.auth-google-note,
+.auth-provider-note {
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.auth-google-note {
+  margin: 8px 0 0;
+}
+
+.auth-google-note[hidden] {
+  display: none;
+}
+
+.auth-provider-note {
+  margin: 10px 0 18px;
+  text-align: center;
+}
+
+.auth-submit:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+.auth-message {
+  min-height: 1.4em;
+  margin: 14px 0 0;
+  color: var(--accent);
+  font-size: 0.92rem;
+}
+
+.auth-message.is-error {
+  color: var(--danger);
+}
+
+.auth-switch {
+  margin: 22px 0 0;
+  color: var(--muted);
+  text-align: center;
+}
+
+.auth-local-note {
+  margin: 18px 0 0;
+  text-align: center;
+}
+
+.account-signout {
+  min-height: 36px;
+  padding: 0.4rem 0.8rem;
+  font: inherit;
+  cursor: pointer;
+}
+
+.account-delete {
+  min-height: 36px;
+  padding: 0.4rem 0.8rem;
+  color: var(--danger);
+  font: inherit;
+  cursor: pointer;
+}
+
+.account-delete:hover {
+  color: var(--danger);
+}
+
+.account-delete:disabled {
+  cursor: wait;
+  opacity: 0.7;
 }
 
 @media (max-width: 800px) {

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Create a FinWise account for your personal finance workspace.">
+  <title>Create account | FinWise</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="auth-page" data-auth-page="signup">
+  <main class="auth-shell">
+    <a class="brand-wrap auth-brand" href="login.html" aria-label="FinWise sign in">
+      <span class="brand-mark" aria-hidden="true">FW</span>
+      <span class="brand-name">FinWise</span>
+    </a>
+    <section class="auth-panel" aria-labelledby="auth-title">
+      <p class="eyebrow">GET STARTED</p>
+      <h1 id="auth-title">Create your account</h1>
+      <p class="auth-description">Set up a private workspace for your finances on this device.</p>
+      <div class="auth-google">
+        <div id="google-signin-button"></div>
+        <p id="google-auth-note" class="auth-google-note" role="status">Google sign-in is not configured yet.</p>
+      </div>
+      <p class="auth-provider-note">Google handles sign-in identity only. Your finance data stays in this local app.</p>
+      <form id="auth-form" novalidate>
+        <label for="email">Email address</label>
+        <input id="email" class="form-control" type="email" name="email" autocomplete="email" maxlength="254" required>
+        <label for="password">Password</label>
+        <input id="password" class="form-control" type="password" name="password" autocomplete="new-password" minlength="8" maxlength="128" aria-describedby="password-help" required>
+        <small id="password-help" class="auth-help">Use at least 8 characters.</small>
+        <label for="confirm-password">Confirm password</label>
+        <input id="confirm-password" class="form-control" type="password" name="confirm-password" autocomplete="new-password" minlength="8" maxlength="128" required>
+        <p id="auth-message" class="auth-message" role="alert" aria-live="polite"></p>
+        <button class="btn btn-primary auth-submit" type="submit">Create account</button>
+      </form>
+      <p class="auth-switch">Already have an account? <a href="login.html">Sign in</a></p>
+    </section>
+    <p class="auth-local-note">Your account and finance data are stored locally on this device.</p>
+  </main>
+  <script src="auth.js"></script>
+</body>
+</html>
