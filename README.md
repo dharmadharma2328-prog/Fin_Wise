@@ -63,7 +63,15 @@ Google verifies the sign-in identity and verified email. New Google accounts are
 
 The `frontend/` folder contains the app pages, styles, and browser code. The `backend/` folder contains the Express API, account authentication, and SQLite schema. The `database/` folder contains `finwise.db`. Passwords are stored as salted scrypt hashes, and sign-in sessions use random tokens whose hashes are stored in SQLite. Financial state is stored per account in the `finance_state` and `finance_records` tables. Data from the previous single-user database is assigned to the first account created. Browser storage is refreshed from the signed-in account, and cleared on sign out. The database and its journal files are excluded from version control and are not served as public website files.
 
-FinWise account records exist in this local database. Passwords must be at least 8 characters. There is no remote password recovery, cloud synchronization, or multi-device account service. Do not expose this server to a public network.
+FinWise account records exist in this local database. Passwords must be at least 8 characters. There is no remote password recovery. By default, the server listens only on this computer; production mode listens on all interfaces and enables Secure session cookies.
+
+## Deploy to Render
+
+The repository includes a Render Blueprint in `render.yaml` for a single FinWise web service with a persistent disk for the SQLite database. In Render, create a new Blueprint and connect this GitHub repository. Review the service and disk plan before applying it; the persistent disk is a paid resource. The service uses `/var/data/finwise.db`, and the `/api/health` endpoint is configured as its health check. Do not add a second instance or remove the disk without first migrating and backing up the database.
+
+After deployment, use the HTTPS URL Render assigns to check that the login page and `/api/health` work. If enabling Google sign-in, add that HTTPS origin to the Google OAuth client's authorized JavaScript origins and set `GOOGLE_CLIENT_ID` in the Render service's environment. Keep credentials in Render's environment settings, not in Git.
+
+This deployment configuration is a starting point, not a security or compliance certification for a public financial-data service. Before inviting users or storing real financial information, arrange reliable encrypted backups and recovery procedures, publish appropriate privacy and terms notices, and have the deployed application reviewed for your intended use. Users currently have no password-recovery flow, so they can lose access if they forget their password.
 
 The project folder is under OneDrive, so the database file may also sync to your OneDrive account depending on its sync settings. Set `FINWISE_DB_PATH` in `backend/.env` to a non-OneDrive location if you want the database to remain outside that synced folder.
 

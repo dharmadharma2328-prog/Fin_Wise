@@ -84,10 +84,23 @@ test("authenticates local accounts and isolates migrated SQLite finance data", a
   const unauthenticatedState = await request("/api/state");
   assert.equal(unauthenticatedState.status, 401);
 
-  const { response: firstSignup, cookie: firstCookie } = await signUp("First@Example.com", "first-password-123");
+  const originalNodeEnv = process.env.NODE_ENV;
+  process.env.NODE_ENV = "production";
+  let firstSignupResult;
+  try {
+    firstSignupResult = await signUp("First@Example.com", "first-password-123");
+  } finally {
+    if (originalNodeEnv === undefined) {
+      delete process.env.NODE_ENV;
+    } else {
+      process.env.NODE_ENV = originalNodeEnv;
+    }
+  }
+  const { response: firstSignup, cookie: firstCookie } = firstSignupResult;
   assert.equal(firstSignup.status, 201);
   assert.ok(firstCookie);
   assert.match(firstSignup.headers.get("set-cookie"), /HttpOnly; SameSite=Strict/);
+  assert.match(firstSignup.headers.get("set-cookie"), /; Secure(?:;|$)/);
   const firstUser = (await firstSignup.json()).user;
   assert.equal(firstUser.email, "first@example.com");
   const passwordRow = db.prepare("select password_hash from users where id = ?").get(firstUser.id);

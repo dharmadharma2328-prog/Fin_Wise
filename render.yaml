@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: finwise
+    runtime: node
+    plan: starter
+    buildCommand: npm ci
+    startCommand: npm start
+    healthCheckPath: /api/health
+    disk:
+      name: finwise-data
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: FINWISE_DB_PATH
+        value: /var/data/finwise.db
+      - key: GOOGLE_CLIENT_ID
+        sync: false

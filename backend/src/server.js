@@ -18,6 +18,7 @@ const {
 
 const app = express();
 const port = Number(process.env.PORT || 3000);
+const host = process.env.NODE_ENV === "production" ? "0.0.0.0" : "127.0.0.1";
 
 app.disable("x-powered-by");
 
@@ -337,9 +338,9 @@ if (require.main === module) {
     );
   }
 
-  app.listen(port, "127.0.0.1", () => {
+  app.listen(port, host, () => {
     console.log(
-      `FinWise server listening on http://localhost:${port}`
+      `FinWise server listening on ${host}:${port}`
     );
   });
 }

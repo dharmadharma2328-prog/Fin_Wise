@@ -162,7 +162,7 @@ router.post("/logout", (req, res, next) => {
       const tokenHash = createHash("sha256").update(token).digest("hex");
       db.prepare("delete from sessions where token_hash = ?").run(tokenHash);
     }
-    res.setHeader("Set-Cookie", `${SESSION_COOKIE}=; HttpOnly; SameSite=Strict; Path=/; Max-Age=0`);
+    res.setHeader("Set-Cookie", `${SESSION_COOKIE}=; ${getSessionCookieAttributes()}; Max-Age=0`);
     res.status(204).end();
   } catch (error) {
     next(error);
@@ -179,7 +179,7 @@ router.delete("/account", requireAuth, (req, res, next) => {
       db.exec("rollback");
       throw error;
     }
-    res.setHeader("Set-Cookie", `${SESSION_COOKIE}=; HttpOnly; SameSite=Strict; Path=/; Max-Age=0`);
+    res.setHeader("Set-Cookie", `${SESSION_COOKIE}=; ${getSessionCookieAttributes()}; Max-Age=0`);
     res.status(204).end();
   } catch (error) {
     next(error);
@@ -223,7 +223,15 @@ function getSessionToken(req) {
 
 function setSessionCookie(res, token) {
   const maxAge = Math.floor(SESSION_DURATION_MS / 1000);
-  res.setHeader("Set-Cookie", `${SESSION_COOKIE}=${token}; HttpOnly; SameSite=Strict; Path=/; Max-Age=${maxAge}`);
+  res.setHeader(
+    "Set-Cookie",
+    `${SESSION_COOKIE}=${token}; ${getSessionCookieAttributes()}; Max-Age=${maxAge}`
+  );
+}
+
+function getSessionCookieAttributes() {
+  const secure = process.env.NODE_ENV === "production" ? "; Secure" : "";
+  return `HttpOnly; SameSite=Strict; Path=/${secure}`;
 }
 
 function createOrFindGoogleUser(googleSubject, email) {
